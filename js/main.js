@@ -116,13 +116,60 @@ if (dockerPulls && githubStars) {
 }
 
 // ToC links
-var toc = document.getElementById('table-of-contents').getElementsByTagName('a');
-if (typeof toc != "undefined"){
+var toc = document.getElementById('table-of-contents');
+if (toc){
+    toc = toc.getElementsByTagName('a');
     for (tocKey in toc){
         if(isNaN(tocKey) === false){
         toc[tocKey].classList.add('list-link');
         }
     }
+}
+
+// set total pulls
+var totalpullsDiv = document.getElementById('totalpulls');
+if(totalpullsDiv){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+      if (req.readyState === 4) {
+        if (totalpullsDiv) {
+            totalpullsDiv.src =
+            'https://img.shields.io/badge/downloads-' +
+            req.responseText +
+            '-yellow?style=flat-square';
+        }
+      }
+    };
+    req.open('GET', 'https://europe-west1-semi-production.cloudfunctions.net/docker-hub-pulls');
+    req.send(null);
+}
+
+// handle more info request
+var requestMoreInfoBtn = document.getElementById('requestMoreInfo');
+if(requestMoreInfoBtn){
+    // validate the email
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    // send the documents
+    function requestDocs(emailAddress, downloadlinkid){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open('GET', 'https://europe-west1-semi-production.cloudfunctions.net/sendgrid-request-slidedeck?email=' + emailAddress + '&downloadLinkId=' + downloadlinkid);
+        xmlHttp.send(null);
+        return xmlHttp.status;
+    }
+    requestMoreInfoBtn.onclick = function(){
+        // e.preventDefault();
+        var emailAddress = document.getElementById('requestMoreInfo-email').value;
+        if(validateEmail(emailAddress) === true){
+            requestDocs(emailAddress, requestMoreInfoBtn.dataset.downloadlinkid);
+            document.getElementById('requestMoreInfo-box-success').style.display = 'block';
+            document.getElementById('requestMoreInfo-box-invalid-email').style.display = 'none';
+        } else {
+            document.getElementById('requestMoreInfo-box-invalid-email').style.display = 'block';
+        }
+    };
 }
 
 // TawkTo

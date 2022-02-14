@@ -6,9 +6,9 @@ title: Example datasets
 intro: 
 description: Example datasets
 tags: ['example datasets']
-menu-order: 8
+menu-order: 10
 open-graph-type: article
-og-img: documentation.jpg
+og: /img/og/og-documentation/tutorials-example-datasets.jpg
 toc: true
 redirect_from:
     - /documentation/weaviate/current/datasets/newspublications.html

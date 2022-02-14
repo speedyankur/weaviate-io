@@ -18,22 +18,33 @@ layout: default
                 </p>
                 <!-- Buttons -->
                 <div class="text-center text-md-start">
-                    <a href="{{ site.slack_signup_url }}" class="btn btn-primary-soft lift" target="_blank">
+                    <a href="{{ site.slack_signup_url }}" class="btn btn-primary-soft lift mr-3 mt-3" target="_blank" style="margin-right: 0.25rem;">
                         Slack <i class="fe fe-slack d-none d-md-inline ms-3 mr-1"></i>
                     </a>
-                    <a href="https://github.com/semi-technologies/weaviate" class="btn btn-primary-soft lift" target="_blank">
+                    <a href="https://github.com/semi-technologies/weaviate" class="btn btn-primary-soft lift mr-3 mt-3" target="_blank" style="margin-right: 0.25rem;">
                         Github <i class="fe fe-github d-none d-md-inline ms-3 mr-1"></i>
                     </a>
-                    <a href="https://twitter.com/weaviate_io" class="btn btn-primary-soft lift" target="_blank">
+                    <a href="https://twitter.com/weaviate_io" class="btn btn-primary-soft lift mr-3 mt-3" target="_blank" style="margin-right: 0.25rem;">
                         Twitter <i class="fe fe-twitter d-none d-md-inline ms-3 mr-1"></i>
                     </a>
-                    <a href="http://weaviate-newsletter.semi.technology/" class="btn btn-primary-soft lift" target="_blank">
+                    <a href="http://weaviate-newsletter.semi.technology/" class="btn btn-primary-soft lift mt-3" target="_blank">
                         Newsletter <i class="fe fe-mail d-none d-md-inline ms-3"></i>
                     </a>
                 </div>
             </div>
         </div> <!-- / .row -->
     </div> <!-- / .container -->
+</section>
+
+<!-- FEATURES -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="lead col-12 mt-6" data-aos="fade-left">
+                Read our Series A Funding Announcement → <a href="https://techcrunch.com/2022/02/22/semi-technologies-search-engine-data/" target="_blank">Techcrunch</a> – <a href="https://finance.yahoo.com/news/semi-technologies-16m-series-round-141500875.html" target="_blank">Yahoo Finance</a> – <a href="https://mtsprout.nl/startups-scaleups/nederlandse-ai-zoekmachine-scoort-16-miljoen-dollar-in-silicon-valley" target="_blank">MT/Sprout (Dutch)</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FEATURES -->
@@ -86,6 +97,37 @@ layout: default
     </div> <!-- / .container -->
 </section>
 
+<!-- PRESS -->
+<section class="py-6 py-md-8 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center justify-content-center text-center" data-aos="fade-right">
+                <!-- Heading -->
+                <h2>
+                    Weaviate in the <span class="text-primary">news</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center text-center" data-aos="fade-right">
+            <div class="col-sm-4 col-md-2 mb-4 mb-md-0 align-items-center justify-content-center text-center">
+                <a href="https://techcrunch.com/2022/02/22/semi-technologies-search-engine-data/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/TechCrunch_logo.svg" alt="Weaviate in Techcrunch" style="height:24px">
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-2 mb-4 mb-md-0 align-items-center justify-content-center text-center">
+                <a href="https://www.zdnet.com/article/weaviate-an-open-source-search-engine-powered-by-machine-learning-vectors-graphs-and-graphql/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/ZDNet_Logo.svg" alt="Weaviate in ZDNet" style="height:80px;margin-top:11px;">
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-2 mb-4 mb-md-0 align-items-center justify-content-center text-center">
+                <a href="https://venturebeat.com/2022/03/07/database-technology-evolves-to-combine-machine-learning-and-data-storage/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/VentureBeat_logo.svg" alt="Weaviate in VentureBeat" style="height:24px">
+                </a>    
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</section>
+
 <!-- INTEGRATIONS -->
 <section class="py-6 py-md-8 border-bottom">
     <div class="container">
@@ -102,30 +144,14 @@ layout: default
             </div>
         </div>
         <div class="row align-items-center justify-content-center mb-6">
-            <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-                <!-- Brand -->
-                <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                    <img src="/img/openai.svg" alt="OpenAI integration with Weaviate logo">
+            {% for integration in site.data.integrations %}
+                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
+                    <!-- Brand -->
+                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
+                        <img src="{{ integration.image }}" alt="{{ integration.name }} integration with Weaviate logo">
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-                <!-- Brand -->
-                <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                    <img src="/img/huggingface.svg" alt="Huggingface integration with Weaviate logo">
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-                <!-- Brand -->
-                <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                    <img src="/img/deepset.png" alt="Deepset integration with Weaviate logo">
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-                <!-- Brand -->
-                <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                    <img src="/img/jina.svg" alt="Jina integration with Weaviate logo">
-                </div>
-            </div>
+            {% endfor %}
         </div> <!-- / .row -->
         <div class="row">
             <div class="col-12 align-items-center justify-content-center text-center">
@@ -137,6 +163,7 @@ layout: default
         </div>
     </div>
 </section>
+
 
 <!-- GRAPHQL -->
 <section class="py-8 py-md-11 border-bottom">
@@ -585,7 +612,7 @@ layout: default
                     Add a +1 to the hundreds of thousands of Weaviate downloads today.
                 </p>
                 <!-- Button -->
-                <a href="/developers/weaviate/current/" class="btn btn-success lift mb-6">
+                <a href="/developers/weaviate/current/" class="btn btn-success lift mb-6" style="margin-right: 0.25rem;">
                     Get started with open source <i class="fe fe-arrow-right"></i>
                 </a>
                 <!-- Button -->

@@ -1,5 +1,30 @@
 ---
 - title: >
+    Yury Malkov co-author of HNSW • HNSW in Vector Search and Weaviate
+  description: > 
+    At the heart of Weaviate sits HNSW, the ANN algorithm that brings the vector search engine to life! Check out this amazing podcast about the science and engineering behind it.
+  youtube: WijYx9_Bpkw
+  date: 2022-03-10T00:00:00Z
+  cover_image: '/img/podcasts/podcast-10.jpg'
+  is_use_case: false
+- title: >
+    Karen Beckers of Squadra • vector search in eCommerce
+  description: > 
+    Karen Beckers, Data Scientist from Squadra Machine Learning Company, gives insightful information about how to use vector search in eCommerce.
+  youtube: brUP1OEtQ5U
+  date: 2022-03-03T00:00:00Z
+  cover_image: '/img/podcasts/podcast-9.jpg'
+  is_use_case: true
+  logo: '/img/squadra.png'
+- title: >
+    Brady Neal of Oogway • Causal Inference in Vector Search
+  description: > 
+    Brady Neal from Oogway talks with Connor Shorten from Henry AI Labs about causal inference and many more. See the timestamps below to check out what this podcast is all about. 
+  youtube: t7g9s1GWcB8
+  date: 2022-02-28T00:00:00Z
+  cover_image: '/img/podcasts/podcast-8.jpg'
+  is_use_case: false
+- title: >
     Arvind Neelakantan of OpenAI • Embeddings API in Weaviate
   description: > 
     Arvind Neelakantan, Research Lead at Open AI, talks with Connor Shorten about their newly released embeddings API, his work at Open AI, the integration into Weaviate, and more.

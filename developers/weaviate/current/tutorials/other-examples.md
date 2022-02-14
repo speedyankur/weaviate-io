@@ -6,9 +6,9 @@ title: Other examples
 intro: 
 description: Other examples with Weaviate
 tags: ['example datasets']
-menu-order: 8
+menu-order: 9
 open-graph-type: article
-og-img: documentation.jpg
+og: /img/og/og-documentation/tutorials-other-examples.jpg
 toc: true
 redirect_from:
 ---

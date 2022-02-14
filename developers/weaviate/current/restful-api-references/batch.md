@@ -8,7 +8,7 @@ description: RESTful API batch reference
 tags: ['RESTful API', 'references', 'batching']
 menu-order: 3
 open-graph-type: article
-og-img: documentation.jpg
+og: /img/og/og-documentation/restful-api-references-batch.jpg
 toc: true
 redirect_from:
     - /documentation/weaviate/current/add-data/batching.html
@@ -19,6 +19,18 @@ redirect_from:
 # Batch data objects
 
 For sending data objects to Weaviate in bulk.
+
+### Performance
+
+💡 Import speeds, especially for large datasets, will drastically improve when using the batching endpoint. 
+
+A few points to bear in mind:
+
+0. If you use a vectorizer that improves with GPU support, make sure to enable it if possible, it will drastically improve import.
+0. Avoid duplicate vectors for multiple data objects.
+0. Handle your errors, if you ignore them, it might lead to significant delays on import.
+0. If import slows down after 2M objects, consider setting the [`vectorCacheMaxObjects`](/developers/weaviate/current/vector-index-plugins/hnsw.html#:~:text=For%20optimal%20search,be%20used%20sparingly.) in your schema. Also, see [this example](https://github.com/semi-technologies/semantic-search-through-wikipedia-with-weaviate/blob/d4711f2bdc75afd503ff70092c3c5303f9dd1b3b/step-2/import.py#L58-L59).
+0. There are ways to improve your setup when using vectorizers. Like in the Wikipedia demo dataset. We will keep publishing about this, sign up for our [Slack channel]({{ site.slack_signup_url }}) to keep up to date.
 
 ### Method and URL
 
