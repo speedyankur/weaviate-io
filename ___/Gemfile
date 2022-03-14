@@ -1,0 +1,28 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+gem "jekyll"
+
+gem "jekyll-toc"
+
+gem "webrick"
+
+gem 'jekyll-redirect-from'
+
+<<<<<<< HEAD
+gem 'html-proofer'
+<<<<<<< HEAD
+=======
+gem 'jekyll-sitemap'
+>>>>>>> 4c90c08 (feat: add sitemap)
+=======
+
+group :jekyll_plugins do
+  gem "jekyll-last-modified-at"
+end
+>>>>>>> d474a69 (with last update)
