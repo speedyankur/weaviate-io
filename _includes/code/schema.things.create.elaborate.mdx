@@ -294,6 +294,10 @@ public class App {
       .build();
 
 
+    ReplicationConfig replicationConfig = ReplicationConfig.builder()
+      .factor(3)
+      .build();
+
     WeaviateClass clazz = WeaviateClass.builder()
       .className("Article")
       .description("A written text, for example a news article or blog post")
