@@ -19,6 +19,40 @@ The `text2vec-openai` module allows you to use [OpenAI embeddings](https://platf
 * Check out the [text2vec-openai demo](https://github.com/weaviate/DEMO-text2vec-openai).
 :::
 
+## Exmample
+
+This example runs a `near_text` query on a collection of `Article` objects:
+
+```python
+def near_text_weaviate(query):
+  print(f"Query: {query}")
+
+  nearText = {
+    "concepts": [query],
+    "distance": 0.7,
+  }
+
+  properties = ["title", "content", "_additional {certainty distance}"]
+
+  query_result = (client.query.get(
+    "Article", properties).with_near_text(nearText).with_limit(10).do())
+
+  articles = query_result["data"]["Get"]["Article"]
+
+  return articles
+```
+
+Press play to see results for "modern art in Europe".
+
+<iframe src="https://replit.com/@SebastianWitale/Weaviate-OpenAI-query?embed=true" width="100%" height="400" />
+
+:::tip
+You can also run your own query by calling something like:
+```python
+run_query("Famous battles")
+```
+:::
+
 ## How to enable
 
 Request an OpenAI API key via [their website](https://openai.com/api/).
