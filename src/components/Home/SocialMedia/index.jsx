@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { ButtonContainer } from '../../../theme/Buttons';
 import styles from './styles.module.scss';
-import { LinkButton } from '/src/theme/Buttons';
 import { tweetsArray } from './tweets';
 import TweetEmbed from 'react-tweet-embed';
 import { useColorMode } from '@docusaurus/theme-common';
