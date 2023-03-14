@@ -13,6 +13,7 @@ import HomepageNewsletter from '/src/components/Home/Newsletter';
 import HomepageCompany from '/src/components/Home/Company';
 import HomepageIntegrations from '/src/components/Home/Integrations';
 import HomepageTestimonials from '/src/components/Home/Testimonials';
+import HomeSocialMedia from '../components/Home/SocialMedia';
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -26,6 +27,7 @@ export default function Home() {
         <HomepageHeader />
         <main>
           <HomepageFeatures />
+          <HomeSocialMedia />
           <HomepageTestimonials />
           <HomepageWhatYouCanDo />
           <HomepageIntegrations />
