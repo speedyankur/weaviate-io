@@ -8,6 +8,17 @@ import Badges from '/_includes/badges.mdx';
 
 <Badges/>
 
+## Without Modules
+
+You can run Weaviate without​ [modules](/developers/weaviate/concepts/modules) (aka stand-alone) like this​:
+
+```bash
+$ curl -o docker-compose.yml "https://configuration.weaviate.io/v2/docker-compose/docker-compose.yml?modules=standalone&runtime=docker-compose&weaviate_version=v||site.weaviate_version||"
+$ docker-compose up
+```
+
+Keep reading for more detailed configurations.
+
 ## Configurator
 
 You can use the configuration tool below to customize your Weaviate setup for
