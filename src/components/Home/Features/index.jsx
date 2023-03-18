@@ -6,23 +6,6 @@ import { LinkButton } from '/src/theme/Buttons';
 export default function HomePage() {
   return (
     <div className="container">
-      <div className={styles.header}>
-        <h2>
-        Developer Experience &amp; Community
-        </h2>
-        <p>
-        Because we care about how fast you can go from zero to production,<br/>we aim to serve our community by:
-        </p>
-        <p>
-          <i className="fas fa-stars"></i> Publishing open-source<br/>
-          <i className="fas fa-stars"></i> Creating valuable SaaS services<br/>
-          <i className="fas fa-stars"></i> Integrating with your favorite embedding providers and frameworks
-        </p>
-
-        <ButtonContainer>
-          <LinkButton link="https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw">Join Our Community on Slack</LinkButton>
-        </ButtonContainer>
-      </div>
       <div className={styles.features}>
         <div className={styles.box}>
           <p className={styles.icon1}></p>
@@ -45,6 +28,23 @@ export default function HomePage() {
             Improve your search results by piping them through LLM models like GPT-3 to create next-gen search experiences.
           </p>
         </div>
+      </div>
+      <div className={styles.header}>
+        <h2>
+        Developer Experience &amp; Community
+        </h2>
+        <p>
+        Because we care about how fast you can go from zero to production,<br/>we aim to serve our community by:
+        </p>
+        <p>
+          <i className="fas fa-stars"></i> Publishing open-source<br/>
+          <i className="fas fa-stars"></i> Creating valuable SaaS services<br/>
+          <i className="fas fa-stars"></i> Integrating with your favorite embedding providers and frameworks
+        </p>
+
+        <ButtonContainer>
+          <LinkButton link="https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw">Join Our Community on Slack</LinkButton>
+        </ButtonContainer>
       </div>
     </div>
   );
