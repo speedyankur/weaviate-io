@@ -13,19 +13,21 @@ export default function PricingPage() {
   const [selectedType, setSelectedType] = useState('saas');
 
   return (
-    <Layout>
-      <MetaSEO img="og/wcs/_title.jpg" />
-      <PricingHeader selectedType={selectedType} handleSelected={setSelectedType} />
-      {selectedType === 'saas' ? (
-        <>
-          <PricingPlan />
-          <PricingCalculator />
-        </>
-      ) : (
-        <HybridBusinessCritical />
-      )}
-      <PricingFAQ />
-      <ContactUsForm />
-    </Layout>
+    <div className="custom-page">
+      <Layout>
+        <MetaSEO img="og/wcs/_title.jpg" />
+        <PricingHeader selectedType={selectedType} handleSelected={setSelectedType} />
+        {selectedType === 'saas' ? (
+          <>
+            <PricingPlan />
+            <PricingCalculator />
+          </>
+        ) : (
+          <HybridBusinessCritical />
+        )}
+        <PricingFAQ />
+        <ContactUsForm />
+      </Layout>
+    </div>
   );
 }
