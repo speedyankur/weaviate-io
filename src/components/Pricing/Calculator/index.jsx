@@ -197,7 +197,7 @@ export default function PricingCalculator({props}) {
                 <>
                   <span>Your estimated price</span>{' '}
                   <div className='priceFormat'>
-                    <p>$ <span className='test'>{price.priceStr}</span> /mo</p>
+                    <p>$ <span className='test'>{handleLabel(price.priceStr)}</span> /mo</p>
                   </div>
                 </>
               )}
