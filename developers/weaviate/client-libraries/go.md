@@ -1,6 +1,6 @@
 ---
 title: Go
-sidebar_position: 4
+sidebar_position: 7
 image: og/docs/client-libraries.jpg
 # tags: ['go', 'client library']
 ---
@@ -59,7 +59,22 @@ import ClientAuthWCS from '/developers/weaviate/client-libraries/_components/cli
 
 <ClientAuthWCS />
 
-### Resource Owner Password Flow
+### API key authentication
+
+:::info This feature is under development.
+:::
+
+<!-- import ClientAuthApiKey from '/developers/weaviate/client-libraries/_components/client.auth.api.key.mdx'
+
+<ClientAuthApiKey /> -->
+
+### OIDC authentication
+
+import ClientAuthOIDCIntro from '/developers/weaviate/client-libraries/_components/client.auth.oidc.introduction.mdx'
+
+<ClientAuthOIDCIntro />
+
+#### Resource Owner Password Flow
 
 import ClientAuthFlowResourceOwnerPassword from '/developers/weaviate/client-libraries/_components/client.auth.flow.resource.owner.password.mdx'
 
@@ -67,8 +82,8 @@ import ClientAuthFlowResourceOwnerPassword from '/developers/weaviate/client-lib
 
 ```go
 cfg, err := weaviate.NewConfig(
-  Host:"weaviate.example.com", 
-  Scheme: "http", 
+  Host:"weaviate.example.com",
+  Scheme: "http",
   authConfig: auth.ResourceOwnerPasswordFlow{
     Username: "Your user",
     Password: "Your password",
@@ -82,7 +97,7 @@ if err != nil{
 client := weaviate.New(*cfg)
 ```
 
-### Client Credentials flow
+#### Client Credentials flow
 
 import ClientAuthFlowClientCredentials from '/developers/weaviate/client-libraries/_components/client.auth.flow.client.credentials.mdx'
 
@@ -90,10 +105,10 @@ import ClientAuthFlowClientCredentials from '/developers/weaviate/client-librari
 
 ```go
 cfg, err := weaviate.NewConfig(
-  Host:"weaviate.example.com", 
-  Scheme: "http", 
+  Host:"weaviate.example.com",
+  Scheme: "http",
   authConfig: auth.ClientCredentials{
-    ClientSecret: "your_client_secret", 
+    ClientSecret: "your_client_secret",
     Scopes: []string{"scope1 scope2"}  // optional, depends on the configuration of your identity provider (not required with WCS)
   }
   headers: nil,
@@ -104,7 +119,7 @@ if err != nil{
 client := weaviate.New(*cfg)
 ```
 
-### Refresh Token flow
+#### Refresh Token flow
 
 import ClientAuthBearerToken from '/developers/weaviate/client-libraries/_components/client.auth.bearer.token.mdx'
 
@@ -112,8 +127,8 @@ import ClientAuthBearerToken from '/developers/weaviate/client-libraries/_compon
 
 ```go
 cfg, err := weaviate.NewConfig(
-  Host:"weaviate.example.com", 
-  Scheme: "http", 
+  Host:"weaviate.example.com",
+  Scheme: "http",
   authConfig: auth.BearerToken{
     AccessToken: "some token",
     RefreshToken: "other token",
@@ -126,17 +141,17 @@ if err != nil{
 client := weaviate.New(*cfg)
 ```
 
-## Custom headers 
+## Custom headers
 
 You can pass custom headers to the client, which are added at initialization:
 
 ```go
 cfg, err := weaviate.NewConfig(
-  Host:"weaviate.example.com", 
-  Scheme: "http", 
+  Host:"weaviate.example.com",
+  Scheme: "http",
   authConfig: nil
   headers: map[string]string{
-    "header_key1": "value", 
+    "header_key1": "value",
     "header_key2": "otherValue",
     },
 )
@@ -156,7 +171,7 @@ All [RESTful endpoints](../api/rest/index.md) and [GraphQL functions](../api/gra
 
 The Go client functions are designed with a 'Builder pattern'. A pattern is used to build complex query objects. This means that a function (for example to retrieve data from Weaviate with a request similar to a RESTful GET request, or a more complex GraphQL query) is built with single objects to reduce complexity. Some builder objects are optional, others are required to perform specific functions. All is documented on the [RESTful API reference pages](../api/rest/index.md) and the [GraphQL reference pages](../api/graphql/index.md).
 
-The code snippet above shows a simple query similar to `RESTful GET /v1/schema`. The client is initiated by requiring the package and connecting to the running instance. Then, a query is constructed by getting the `.Schema` with `.Getter()`. The query will be sent with the `.Go()` function, this object is thus required for every function you want to build and execute. 
+The code snippet above shows a simple query similar to `RESTful GET /v1/schema`. The client is initiated by requiring the package and connecting to the running instance. Then, a query is constructed by getting the `.Schema` with `.Getter()`. The query will be sent with the `.Go()` function, this object is thus required for every function you want to build and execute.
 
 ## Migration Guides
 
