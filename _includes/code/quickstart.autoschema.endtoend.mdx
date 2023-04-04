@@ -4,6 +4,9 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="languages">
 <TabItem value="py" label="Python">
 
+<!--
+print("Do something to prepare for the tests")
+-->
 ```python
 import weaviate
 import json
@@ -45,6 +48,7 @@ with client.batch as batch:
 
         client.batch.add_data_object(properties, "Question")
 ```
+<!-- assert client.query.aggregate("Question").with_meta_count().do()["data"]["Aggregate"]["Question"][0]["meta"]["count"] == 10 -->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">
