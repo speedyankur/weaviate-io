@@ -60,7 +60,7 @@ assert "YourClassName" not in class_names
 <TabItem value="js" label="JavaScript">
 
 ```js
-const weaviate = require('weaviate-client');
+const weaviate = require('weaviate-ts-client');
 
 const client = weaviate.client({
   scheme: 'https',
@@ -74,10 +74,10 @@ client.schema
   .withClassName(className)
   .do()
   .then(res => {
-    console.log(res);
+  console.log(res);
   })
   .catch(err => {
-    console.error(err)
+  console.error(err)
   });
 ```
 

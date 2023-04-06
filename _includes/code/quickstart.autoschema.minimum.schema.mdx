@@ -33,8 +33,8 @@ assert "Question" in class_names
 
 ```js
 let classObj = {
-    "class": "Question",
-    "vectorizer": "text2vec-openai"  // Or "text2vec-cohere" or "text2vec-huggingface"
+  'class': 'Question',
+  'vectorizer': 'text2vec-openai'  // Or 'text2vec-cohere' or 'text2vec-huggingface'
 }
 
 // add the schema
@@ -56,8 +56,8 @@ client
 
 ```ts
 let classObj = {
-    "class": "Question",
-    "vectorizer": "text2vec-openai"  // Or "text2vec-cohere" or "text2vec-huggingface"
+  'class': 'Question',
+  'vectorizer': 'text2vec-openai'  // Or 'text2vec-cohere' or 'text2vec-huggingface'
 }
 
 // add the schema
@@ -66,10 +66,10 @@ client
   .classCreator()
   .withClass(classObj)
   .do()
-  .then(res => {
+  .then((res: any) => {
     console.log(res)
   })
-  .catch(err => {
+  .catch((err: Error) => {
     console.error(err)
   });
 ```
