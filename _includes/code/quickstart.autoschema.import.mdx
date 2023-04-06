@@ -4,10 +4,41 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="languages">
 <TabItem value="py" label="Python">
 
+<!-- import weaviate
+client = weaviate.Client(
+    url="http://localhost:8080",
+    additional_headers = {
+        "X-OpenAI-Api-Key": "<THE-KEY>"
+    }
+)
+try:
+  client.schema.delete_class("Question")
+except:
+  pass
+class_obj = {
+  "class": "Question"
+}
+client.schema.create_class(class_obj)
+schema = client.schema.get()
+class_names = [c["class"] for c in schema["classes"]]
+assert "Question" in class_names
+data = [
+  {
+    "Answer": "42",
+    "Question": "What is the meaning of life?",
+    "Category": "The Guide",
+  },
+  {
+    "Answer": "Friction.",
+    "Question": "What is the name for the force that opposes motion between two surfaces in contact?",
+    "Category": "Science",
+  },
+]
+-->
 ```python
 # Configure a batch process
 with client.batch as batch:
-    batch.batch_size=100
+    batch.batch_size = 100
     for i, d in enumerate(data):
         properties = {
             "answer": d["Answer"],
@@ -17,6 +48,10 @@ with client.batch as batch:
 
         client.batch.add_data_object(properties, "Question")
 ```
+<!--
+response = client.query.aggregate("Question").with_meta_count().do()
+assert response["data"]["Aggregate"]["Question"][0]["meta"]["count"] == 2
+-->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">

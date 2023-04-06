@@ -4,15 +4,22 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="languages">
 <TabItem value="py" label="Python">
 
+<!--
+print("Do something to prepare for the tests")
+-->
 ```python
 import weaviate
 
 client = weaviate.Client(
-    url = "https://some-endpoint.weaviate.network/",  # Replace with your endpoint
+    url="https://some-endpoint.weaviate.network",  # Replace with your endpoint
 )
 
 client.schema.get()
 ```
+<!--
+schema = client.schema.get()
+assert "classes" in schema.keys()
+-->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">

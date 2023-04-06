@@ -21,14 +21,40 @@ import TabItem from '@theme/TabItem';
 </TabItem> */}
 <TabItem value="py" label="Python">
 
+<!--
+import weaviate
+client = weaviate.Client(
+    url="http://localhost:8080"
+)
+try:
+  client.schema.delete_class("YourClassName")
+except:
+  pass
+class_obj = {
+  "class": "YourClassName"
+}
+client.schema.create_class(class_obj)
+schema = client.schema.get()
+class_names = [c["class"] for c in schema["classes"]]
+assert "YourClassName" in class_names
+-->
 ```python
 import weaviate
 
-client = weaviate.Client("https://some-endpoint.weaviate.network/")  # Replace with your endpoint
+client = weaviate.Client(
+    "https://some-endpoint.weaviate.network"
+)  # Replace with your endpoint
 
 # delete class "YourClassName" - THIS WILL DELETE ALL DATA IN THIS CLASS
-client.schema.delete_class("YourClassName")  # Replace with your class name - e.g. "Question"
+client.schema.delete_class(
+    "YourClassName"
+)  # Replace with your class name - e.g. "Question"
 ```
+<!--
+schema = client.schema.get()
+class_names = [c["class"] for c in schema["classes"]]
+assert "YourClassName" not in class_names
+-->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">
