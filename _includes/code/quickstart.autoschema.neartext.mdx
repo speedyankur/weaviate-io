@@ -22,6 +22,9 @@ import TabItem from '@theme/TabItem';
 </TabItem> */}
 <TabItem value="py" label="Python">
 
+<!--
+print("No prep required.")
+-->
 ```python
 import weaviate
 import json
@@ -35,7 +38,7 @@ client = weaviate.Client(
 
 nearText = {"concepts": ["biology"]}
 
-result = (
+results = (
     client.query
     .get("Question", ["question", "answer", "category"])
     .with_near_text(nearText)
@@ -43,8 +46,13 @@ result = (
     .do()
 )
 
-print(json.dumps(result, indent=4))
+print(json.dumps(results, indent=4))
 ```
+<!--
+assert len(results["Get"]["Question"]) == 2
+assert results["Get"]["Question"][0]["ansewr"] == "DNA"
+assert results["Get"]["Question"][1]["ansewr"] == "species"
+-->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">

@@ -23,9 +23,16 @@ script_paths = [
     "./_includes/schema-delete-class.mdx",
     "./_includes/code/quickstart.autoschema.connect.withkey.mdx",
     "./_includes/code/quickstart.autoschema.import.mdx",
-    "./_includes/code/quickstart.autoschema.endtoend.mdx",
+    # "./_includes/code/quickstart.autoschema.endtoend.mdx",
 ]
 
 @pytest.mark.parametrize("script_path", script_paths)
-def test(script_path, setup_and_teardown):
+def test_individual(script_path, setup_and_teardown):
     parse_and_run(script_path)
+
+def test_individual(setup_and_teardown):
+    for script in [
+        "./_includes/code/quickstart.autoschema.endtoend.mdx",
+        "./_includes/code/quickstart.autoschema.neartext.mdx",
+    ]:
+        parse_and_run(script)
