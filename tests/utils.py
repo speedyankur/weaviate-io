@@ -15,14 +15,14 @@ def preprocess_codeblock(raw_codeblock: str) -> str:
     """
     # Replace URL
     proc_codeblock = raw_codeblock
-    for rep_tuple in [
+    for replace_pair in [
         [
             "http://localhost:8080",
             "http://localhost:8099",
         ],  # Specify different port to usual to avoid confusion
         ["https://some-endpoint.weaviate.network", "http://localhost:8099"],
     ]:
-        proc_codeblock = proc_codeblock.replace(*rep_tuple)
+        proc_codeblock = proc_codeblock.replace(*replace_pair)
 
     # Replace OpenAI key
     pattern = r'"X-OpenAI-Api-Key": "(.+?)"'
@@ -93,34 +93,6 @@ def extract_test_code_blocks(file_path: Path) -> list:
     return extracted_blocks
 
 
-# def extract_test_code_blocks(file_path: Path) -> dict:
-#     """
-#     Extracts Python code blocks and associated HTML comments from a markdown file.
-
-#     Args:
-#         file_path (Path): The path to the markdown file.
-
-#     Returns:
-#         dict: A dictionary containing extracted code blocks and associated comments.
-#     """
-#     code_block_regex = re.compile(r'<!--\s*(.+?)\s*-->\n?```python\n(.*?)\n```\n?<!--\s*(.+?)\s*-->', re.DOTALL | re.MULTILINE)
-
-#     with file_path.open() as file:
-#         content = file.read()
-#         code_blocks = code_block_regex.findall(content)
-
-#         extracted_blocks = []
-
-#         for block in code_blocks:
-#             extracted_blocks.append({
-#                 "preparation": preprocess_codeblock(block[0].strip()),
-#                 "code": preprocess_codeblock(block[1]),
-#                 "test_assertion": block[2].strip(),
-#             })
-
-#         return extracted_blocks
-
-
 def process_markdown_files(dir_path: str) -> list:
     """
     Processes all markdown files in the specified directory, extracting code blocks and associated comments.
@@ -139,32 +111,11 @@ def process_markdown_files(dir_path: str) -> list:
     return all_blocks
 
 
-def parse_and_run(script_path: str) -> None:
-    """
-    Parses the specified markdown file, extracts the code blocks, and runs the code with associated tests.
-
-    Args:
-        script_path (str): The path to the markdown file.
-    """
-    print(f"Testing {script_path}")
-    startpath = Path(script_path)
-    codeblocks = extract_test_code_blocks(startpath)
-    codeblocks
-
-    for codeblock in codeblocks:
-        print(f"Found a code block {len(script_path)} lines long...")
-        exec(codeblock["preparation"])
-        print(f"Running code...")
-        exec(codeblock["code"])
-        print(f"Testing: \n==========\n{codeblock['test_assertion']}\n==========\n")
-        exec(codeblock["test_assertion"])
-
-
-def run_script(script_path):
-    with open(script_path, "r") as f:
-        script_txt = f.read()
-    proc_script = preprocess_codeblock(script_txt)
-
-    namespace = {}
-    exec(proc_script, namespace)
-    return namespace
+def parse_and_prep_script(mdx_path: str):
+    mdx_obj = Path(mdx_path)
+    code_blocks = utils.extract_language_code_blocks(mdx_obj)
+    if len(code_blocks) > 1:
+        raise ValueError(
+            "More than one code block found. You might want to process this differently."
+        )
+    return utils.preprocess_codeblock(code_blocks[0])

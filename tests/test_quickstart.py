@@ -1,30 +1,10 @@
-from pathlib import Path
 import os
 import utils
 
 
-def prep_script(script_path: str):
-    with open(script_path, "r") as f:
-        script_txt = f.read()
-    proc_script = utils.preprocess_codeblock(script_txt)
-
-    test_namespace = {}
-    return proc_script, test_namespace
-
-
-def parse_and_prep_script(mdx_path: str):
-    mdx_obj = Path(mdx_path)
-    code_blocks = utils.extract_language_code_blocks(mdx_obj)
-    if len(code_blocks) > 1:
-        raise ValueError(
-            "More than one code block found. You might want to process this differently."
-        )
-    return utils.preprocess_codeblock(code_blocks[0])
-
-
 def test_client_instantiation(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script("_includes/code/wcs.client.instantiation.mdx")
+    proc_script = utils.parse_and_prep_script("_includes/code/wcs.client.instantiation.mdx")
     test_namespace = {}
 
     # ===== PRE-TEST SCRIPT =====
@@ -38,7 +18,7 @@ def test_client_instantiation(anon_empty_weaviate):
 
 def test_minimum_schema(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script("_includes/code/quickstart.autoschema.minimum.schema.mdx")
+    proc_script = utils.parse_and_prep_script("_includes/code/quickstart.autoschema.minimum.schema.mdx")
     test_namespace = {}
 
     # ===== PRE-TEST SCRIPT =====
@@ -65,7 +45,7 @@ def test_minimum_schema(anon_empty_weaviate):
 
 def test_delete_class(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script("_includes/schema-delete-class.mdx")
+    proc_script = utils.parse_and_prep_script("_includes/schema-delete-class.mdx")
     test_namespace = {}
 
     # ===== PRE-TEST SCRIPT =====
@@ -95,7 +75,7 @@ def test_delete_class(anon_empty_weaviate):
 
 def test_connect_w_apikey(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script(
+    proc_script = utils.parse_and_prep_script(
         "_includes/code/quickstart.autoschema.connect.withkey.mdx"
     )
     test_namespace = {}
@@ -127,7 +107,7 @@ def test_connect_w_apikey(anon_empty_weaviate):
 
 def test_import(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script(
+    proc_script = utils.parse_and_prep_script(
         "_includes/code/quickstart.autoschema.import.mdx"
     )
     test_namespace = {}
@@ -173,7 +153,7 @@ def test_import(anon_empty_weaviate):
 
 def test_endtoend_and_query(anon_empty_weaviate):
     # ===== INIT TEST ENV =====
-    proc_script = parse_and_prep_script(
+    proc_script = utils.parse_and_prep_script(
         "_includes/code/quickstart.autoschema.endtoend.mdx"
     )
     test_namespace = {}
@@ -202,7 +182,7 @@ def test_endtoend_and_query(anon_empty_weaviate):
         == 10
     )
 
-    proc_script = parse_and_prep_script(
+    proc_script = utils.parse_and_prep_script(
         "_includes/code/quickstart.autoschema.neartext.mdx"
     )
     exec(proc_script, globals(), test_namespace)
