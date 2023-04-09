@@ -1,12 +1,18 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-import PythonBlock from '!!raw-loader!./wcs.client.instantiation.py';
 
 <Tabs groupId="languages">
 <TabItem value="py" label="Python">
 
-<CodeBlock language="python">{PythonBlock}</CodeBlock>
+```python
+import weaviate
+
+client = weaviate.Client(
+    url="https://some-endpoint.weaviate.network",  # Replace with your endpoint
+)
+
+schema = client.schema.get()
+```
 
 </TabItem>
 <TabItem value="js" label="JavaScript">

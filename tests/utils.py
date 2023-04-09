@@ -14,9 +14,15 @@ def preprocess_codeblock(raw_codeblock: str) -> str:
         str: The preprocessed code block with placeholders replaced.
     """
     # Replace URL
-    proc_codeblock = raw_codeblock.replace(
-        "https://some-endpoint.weaviate.network", "http://localhost:8099"
-    )  # Specify different port to avoid confusion
+    proc_codeblock = raw_codeblock
+    for rep_tuple in [
+        [
+            "http://localhost:8080",
+            "http://localhost:8099",
+        ],  # Specify different port to usual to avoid confusion
+        ["https://some-endpoint.weaviate.network", "http://localhost:8099"],
+    ]:
+        proc_codeblock = proc_codeblock.replace(*rep_tuple)
 
     # Replace OpenAI key
     pattern = r'"X-OpenAI-Api-Key": "(.+?)"'
