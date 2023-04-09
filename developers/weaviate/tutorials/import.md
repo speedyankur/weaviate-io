@@ -104,7 +104,7 @@ You can also manually upload existing vectors and use a vectorizer module for ve
 You can quickly check the imported object by opening `<weaviate-endpoint>/v1/objects` in a browser, like this (replace with your endpoint):
 
 ```
-https://some-endpoint.semi.network/v1/objects
+https://some-endpoint.weaviate.network/v1/objects
 ```
 
 Or you can read the objects in your project, like this:

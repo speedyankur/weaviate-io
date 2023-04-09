@@ -113,9 +113,9 @@ def process_markdown_files(dir_path: str) -> list:
 
 def parse_and_prep_script(mdx_path: str):
     mdx_obj = Path(mdx_path)
-    code_blocks = utils.extract_language_code_blocks(mdx_obj)
+    code_blocks = extract_language_code_blocks(mdx_obj)
     if len(code_blocks) > 1:
         raise ValueError(
             "More than one code block found. You might want to process this differently."
         )
-    return utils.preprocess_codeblock(code_blocks[0])
+    return preprocess_codeblock(code_blocks[0])

@@ -154,7 +154,7 @@ import CodeQueryWhere1 from '/_includes/code/quickstart.query.where.1.mdx'
 
 <CodeQueryWhere1 />
 
-This query asks Weaviate for **Question** objects whose category contains the string `ANIMALS`. You should see a result like this:
+This query asks Weaviate for **Question** objects whose category contains the string `ANIMALS`. You should see a result like this (note: the order might be different):
 
 ```json
 {

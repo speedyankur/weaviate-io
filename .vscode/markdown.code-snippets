@@ -149,7 +149,7 @@
 			"def test_template(anon_empty_weaviate):",
 			"    # ===== INIT TEST ENV =====",
 			"    proc_script = utils.parse_and_prep_script(",
-			"        \"path/to/script\"",
+			"        \"_includes/code/script\"",
 			"    )",
 			"    test_namespace = {}",
 			"    ",

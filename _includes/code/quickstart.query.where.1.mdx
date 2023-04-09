@@ -11,14 +11,15 @@ TBC
 </TabItem> */}
 <TabItem value="py" label="Python">
 
+<!-- See test_tutorials.py -->
 ```python
 import weaviate
 import json
 
 client = weaviate.Client(
-    url="https://some-endpoint.semi.network",
+    url="https://some-endpoint.weaviate.network",
     additional_headers={
-        'X-OpenAI-Api-Key': api_tkn
+        'X-OpenAI-Api-Key': "<THE-KEY>"
     }
 )
 
@@ -28,14 +29,14 @@ where_filter = {
     "valueText": "ANIMALS",
 }
 
-result = (
+results = (
     client.query
     .get("Question", ["question", "answer", "category"])
     .with_where(where_filter)
     .do()
 )
 
-print(json.dumps(result, indent=4))
+print(json.dumps(results, indent=4))
 ```
 
 </TabItem>

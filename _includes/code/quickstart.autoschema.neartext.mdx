@@ -22,9 +22,7 @@ import TabItem from '@theme/TabItem';
 </TabItem> */}
 <TabItem value="py" label="Python">
 
-<!--
-print("No prep required.")
--->
+<!-- See test_quickstart.py/test_endtoend_and_query -->
 ```python
 import weaviate
 import json
@@ -48,11 +46,6 @@ results = (
 
 print(json.dumps(results, indent=4))
 ```
-<!--
-assert len(results["Get"]["Question"]) == 2
-assert results["Get"]["Question"][0]["ansewr"] == "DNA"
-assert results["Get"]["Question"][1]["ansewr"] == "species"
--->
 
 </TabItem>
 <TabItem value="js" label="JavaScript">

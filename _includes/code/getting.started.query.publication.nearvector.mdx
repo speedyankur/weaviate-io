@@ -15,7 +15,7 @@ TBC
 import weaviate
 import json
 
-client = weaviate.Client('https://some-endpoint.semi.network')
+client = weaviate.Client('https://some-endpoint.weaviate.network')
 query_result = client.query.get(class_name='Publication', properties="name").with_near_vector({
     "vector": [-0.14, -0.06, -0.07],
     "certainty": 0.7
@@ -32,7 +32,7 @@ weaviate = require("weaviate-client");
 
 const client = weaviate.client({
     scheme: "https",
-    host: "some-endpoint.semi.network"
+    host: "some-endpoint.weaviate.network"
 });
 
 client.graphql

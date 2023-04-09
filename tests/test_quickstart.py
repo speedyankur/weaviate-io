@@ -169,8 +169,6 @@ def test_endtoend_and_query(anon_empty_weaviate):
     except:
         pass
 
-    test_namespace["client"] = client
-
     # ===== RUN SCRIPT =====
     exec(proc_script, globals(), test_namespace)
 
